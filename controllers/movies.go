@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
+	"time"
 
 	"github.com/gorilla/mux"
 	"github.com/jphillips2121/movies-api/dao"
@@ -28,6 +29,11 @@ func (service *MoviesService) HandleGetMovies(w http.ResponseWriter, req *http.R
 	}
 
 	w.Header().Set("Content-Type", "application/json")
+
+	// Convert all times to UNIX times from epoch
+	for index, movie := range movies.Movies {
+		movies.Movies[index] = convertEpochTime(movie)
+	}
 
 	err = json.NewEncoder(w).Encode(movies)
 	if err != nil {
@@ -69,7 +75,8 @@ func (service *MoviesService) HandleGetMovie(w http.ResponseWriter, req *http.Re
 	for _, movie := range movies.Movies {
 		if movie.MovieId == intID {
 			w.Header().Set("Content-Type", "application/json")
-			err = json.NewEncoder(w).Encode(movie)
+
+			err = json.NewEncoder(w).Encode(convertEpochTime(movie))
 			if err != nil {
 				fmt.Println(fmt.Errorf("error encoding movie json: [%v]", err))
 				w.WriteHeader(http.StatusInternalServerError)
@@ -164,4 +171,22 @@ func (service *MoviesService) HandleMostLikes(w http.ResponseWriter, req *http.R
 	}
 	return
 
+}
+
+// Converts the time stamp in the comments to a readable time.
+func convertEpochTime(oldMovieResource models.MoviesResource) models.MoviesResource {
+	newMovieResource := models.MoviesResource{}
+	newMovieResource = oldMovieResource
+
+	oldCommentsResource := oldMovieResource.Comments
+	newCommentsResource := []models.CommentsResource{}
+	for index := range oldCommentsResource {
+		newCommentsResource = append(newCommentsResource, oldCommentsResource[index])
+		tm, _ := strconv.ParseInt(oldCommentsResource[index].DateCreated, 10, 64)
+		timenew := time.Unix(tm, 0)
+		newCommentsResource[index].DateCreated = timenew.String()
+	}
+	newMovieResource.Comments = newCommentsResource
+
+	return newMovieResource
 }

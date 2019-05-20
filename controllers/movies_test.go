@@ -16,18 +16,21 @@ import (
 )
 
 var defaultComment1 = models.CommentsResource{
-	User:    "test1",
-	Message: "message1",
+	User:        "test1",
+	Message:     "message1",
+	DateCreated: "1294012800",
 }
 
 var defaultComment2 = models.CommentsResource{
-	User:    "test2",
-	Message: "message2",
+	User:        "test2",
+	Message:     "message2",
+	DateCreated: "1294012800",
 }
 
 var defaultComment3 = models.CommentsResource{
-	User:    "test1",
-	Message: "message3",
+	User:        "test1",
+	Message:     "message3",
+	DateCreated: "1294012800",
 }
 
 var defaultMovie = models.MoviesResource{
