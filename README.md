@@ -11,7 +11,8 @@ In order to run this API locally you will need to install the following:
 ## Running the application locally
 
 1. Clone this repository: `go get github.com/jphillips2121/movies-api`
-1. From the main directory run `go run main.go`
+1. Locate the downloaded repository in `$GOPATH/src/github.com/jphillips2121/movies-api`
+1. From this main directory run `go run main.go`
 
 ## Endpoints
 
