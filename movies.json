@@ -1,0 +1,131 @@
+{  
+   "movies":[  
+      {  
+         "movie_id":1,
+         "title":"Minions",
+         "description":"Minions Stuart, Kevin, and Bob are recruited by Scarlet Overkill, a supervillain who, alongside her inventor husband Herb, hatches a plot to take over the world.",
+         "producer":"Universal",
+         "available_in_3d" : true,
+         "age_rating":"PG",
+         "likes":110,
+         "comments":[  
+            {  
+               "user":"bob",
+               "message":"Cracking movie",
+               "dateCreated":"1294012800",
+               "like":9
+            },
+            {  
+               "user":"testingPriest",
+               "message":"My kids loved it",
+               "dateCreated":"1271030400",
+               "like":7
+            }
+         ]
+      },
+      {  
+         "movie_id":2,
+         "title":"The Shawshank Redemption",
+         "description":"Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+         "producer":"Castle Rock Entertainment",
+         "available_in_3d" : false,
+         "age_rating":"R",
+         "likes":1200,
+         "comments":[  
+            {  
+               "user":"luke",
+               "message":"Best movie ever!",
+               "dateCreated":"1441324800",
+               "like":10
+            },
+            {  
+               "user":"testingPriest",
+               "message":"This is the best movie ever",
+               "dateCreated":"1470700800",
+               "like":10
+            }
+         ]
+      },
+      {  
+         "movie_id":3,
+         "title":"Toy Story",
+         "description":"A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy's room.",
+         "producer":"Pixar",
+         "available_in_3d" : false,
+         "age_rating":"U",
+         "likes":999,
+         "comments":[
+            {  
+               "user":"testingPriest",
+               "message":"Melted my heart",
+               "dateCreated":"1473292800",
+               "like":9
+            },
+            {  
+               "user":"nigel",
+               "message":"Pile of rubbish, just for kids",
+               "dateCreated":"1473638400",
+               "like":2
+            },
+            {  
+               "user":"freddie",
+               "message":"This is an amazing movie, it really impressed me",
+               "dateCreated":"1427932800",
+               "like":9
+            }
+         ]
+      },
+      {  
+         "movie_id":4,
+         "title":"Deadpool",
+         "description":"A fast-talking mercenary with a morbid sense of humor is subjected to a rogue experiment that leaves him with accelerated healing powers and a quest for revenge.",
+         "producer":"20th Century Fox",
+         "available_in_3d" : true,
+         "age_rating":"R",
+         "likes":44,
+         "comments":[  
+            {  
+               "user":"deadpool_fan_606",
+               "message":"I've seen it 25 times this week",
+               "dateCreated":"1473292800",
+               "like":10
+           }
+         ]
+      },
+      {  
+         "movie_id":5,
+         "title":"Jaws",
+         "description":"A giant great white shark arrives on the shores of a New England beach resort and wreaks havoc with bloody attacks on swimmers, until a local sheriff teams up with a marine biologist and an old seafarer to hunt the monster down.",
+         "producer":"Universal Pictures",
+         "available_in_3d" : false,
+         "age_rating":"PG",
+         "likes":1000,
+         "comments":[  
+            {  
+               "user":"Alison",
+               "message":"This is amazing .....",
+               "dateCreated":"1380240000",
+               "like":10
+            },
+            {  
+               "user":"testingPriest",
+               "message":"Killer shark! What's not to like",
+               "dateCreated":"1347321600",
+               "like":9
+            },
+            {  
+               "user":"David",
+               "message":"It was OK to pass the time away",
+               "dateCreated":"1420070400",
+               "like":5
+            },
+            {  
+               "user":"Jones",
+               "message":"Scary, I wished I had bought a different movie",
+               "dateCreated":"1486252800",
+               "like":1
+            }
+         ]
+      }
+   ]
+}
