@@ -1,10 +1,11 @@
 package main
 
 import (
-	"github.com/jphillips2121/movies-api/controllers"
 	"fmt"
-	"github.com/gorilla/mux"
 	"net/http"
+
+	"github.com/gorilla/mux"
+	"github.com/jphillips2121/movies-api/controllers"
 )
 
 func main() {
@@ -20,4 +21,3 @@ func main() {
 	}
 
 }
-

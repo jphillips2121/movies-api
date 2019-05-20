@@ -6,5 +6,5 @@ import (
 
 // DAO is an interface for accessing dao from json file
 type DAO interface {
-	GetJsonData() (*models.Movies, error)
+	GetJSONData() (*models.Movies, error)
 }

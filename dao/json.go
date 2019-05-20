@@ -1,15 +1,18 @@
 package dao
 
 import (
-	"github.com/jphillips2121/movies-api/models"
 	"encoding/json"
 	"io/ioutil"
 	"os"
+
+	"github.com/jphillips2121/movies-api/models"
 )
 
-type Json struct {}
+// JSON struct provides a service to be accessed from the dao.
+type JSON struct{}
 
-func (j *Json) GetJsonData() (*models.Movies, error) {
+// GetJSONData returns all the JSON data from the movies.json.
+func (j *JSON) GetJSONData() (*models.Movies, error) {
 
 	// Open jsonFile and handle potential errors
 	jsonFile, err := os.Open("movies.json")

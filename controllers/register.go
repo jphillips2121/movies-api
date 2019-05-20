@@ -1,16 +1,17 @@
 package controllers
 
 import (
-	"github.com/jphillips2121/movies-api/dao"
 	"github.com/gorilla/mux"
+	"github.com/jphillips2121/movies-api/dao"
 )
 
 var moviesService *MoviesService
 
+// Register defines the route mappings for the API
 func Register(mainRouter *mux.Router) {
 
 	moviesService = &MoviesService{
-		Dao: &dao.Json{},
+		Dao: &dao.JSON{},
 	}
 
 	mainRouter.HandleFunc("/movies", moviesService.HandleGetMovies).Methods("GET").Name("get-movies")
