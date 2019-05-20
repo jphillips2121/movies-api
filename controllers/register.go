@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"../dao"
+	"github.com/jphillips2121/movies-api/dao"
 	"github.com/gorilla/mux"
 )
 

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"./controllers"
+	"github.com/jphillips2121/movies-api/controllers"
 	"fmt"
 	"github.com/gorilla/mux"
 	"net/http"

@@ -1,12 +1,12 @@
 package controllers
 
 import (
-	"../dao"
-	"../models"
 	"encoding/json"
 	"fmt"
 	"github.com/companieshouse/chs.go/log"
 	"github.com/gorilla/mux"
+	"github.com/jphillips2121/movies-api/dao"
+	"github.com/jphillips2121/movies-api/models"
 	"net/http"
 	"strconv"
 )

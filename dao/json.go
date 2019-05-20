@@ -1,7 +1,7 @@
 package dao
 
 import (
-	"../models"
+	"github.com/jphillips2121/movies-api/models"
 	"encoding/json"
 	"io/ioutil"
 	"os"
