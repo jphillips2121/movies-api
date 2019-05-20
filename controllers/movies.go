@@ -6,7 +6,6 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/companieshouse/chs.go/log"
 	"github.com/gorilla/mux"
 	"github.com/jphillips2121/movies-api/dao"
 	"github.com/jphillips2121/movies-api/models"
@@ -23,7 +22,7 @@ func (service *MoviesService) HandleGetMovies(w http.ResponseWriter, req *http.R
 	//Returns all movies in the JSON
 	movies, err := service.Dao.GetJSONData()
 	if err != nil {
-		log.ErrorR(req, fmt.Errorf("error getting movie data from json: [%v]", err))
+		fmt.Println(req, fmt.Errorf("error getting movie data from json: [%v]", err))
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
@@ -32,7 +31,7 @@ func (service *MoviesService) HandleGetMovies(w http.ResponseWriter, req *http.R
 
 	err = json.NewEncoder(w).Encode(movies)
 	if err != nil {
-		log.ErrorR(req, fmt.Errorf("error encoding movies json: [%v]", err))
+		fmt.Println(req, fmt.Errorf("error encoding movies json: [%v]", err))
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
@@ -45,7 +44,7 @@ func (service *MoviesService) HandleGetMovie(w http.ResponseWriter, req *http.Re
 	vars := mux.Vars(req)
 	id := vars["id"]
 	if id == "" {
-		log.ErrorR(req, fmt.Errorf("no id provided for the movie"))
+		fmt.Println(req, fmt.Errorf("no id provided for the movie"))
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
@@ -53,7 +52,7 @@ func (service *MoviesService) HandleGetMovie(w http.ResponseWriter, req *http.Re
 	// Converts the ID to an integer to be used later
 	intID, err := strconv.Atoi(id)
 	if err != nil {
-		log.ErrorR(req, fmt.Errorf("the id provided is not a number: [%v]", err))
+		fmt.Println(req, fmt.Errorf("the id provided is not a number: [%v]", err))
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
@@ -61,7 +60,7 @@ func (service *MoviesService) HandleGetMovie(w http.ResponseWriter, req *http.Re
 	// Returns all movies in the JSON
 	movies, err := service.Dao.GetJSONData()
 	if err != nil {
-		log.ErrorR(req, fmt.Errorf("error getting movie data from json: [%v]", err))
+		fmt.Println(req, fmt.Errorf("error getting movie data from json: [%v]", err))
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
@@ -72,7 +71,7 @@ func (service *MoviesService) HandleGetMovie(w http.ResponseWriter, req *http.Re
 			w.Header().Set("Content-Type", "application/json")
 			err = json.NewEncoder(w).Encode(movie)
 			if err != nil {
-				log.ErrorR(req, fmt.Errorf("error encoding movie json: [%v]", err))
+				fmt.Println(req, fmt.Errorf("error encoding movie json: [%v]", err))
 				w.WriteHeader(http.StatusInternalServerError)
 				return
 			}
@@ -82,7 +81,7 @@ func (service *MoviesService) HandleGetMovie(w http.ResponseWriter, req *http.Re
 
 	// If the program reaches this then the movie ID is not present
 	w.WriteHeader(http.StatusNotFound)
-	log.ErrorR(req, fmt.Errorf("the id provided is not present in the database"))
+	fmt.Println(req, fmt.Errorf("the id provided is not present in the database"))
 
 }
 
@@ -92,7 +91,7 @@ func (service *MoviesService) HandleMostComments(w http.ResponseWriter, req *htt
 	// Returns all movies in the JSON
 	movies, err := service.Dao.GetJSONData()
 	if err != nil {
-		log.ErrorR(req, fmt.Errorf("error getting movie data from json: [%v]", err))
+		fmt.Println(req, fmt.Errorf("error getting movie data from json: [%v]", err))
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
@@ -130,7 +129,7 @@ func (service *MoviesService) HandleMostComments(w http.ResponseWriter, req *htt
 	w.Header().Set("Content-Type", "application/json")
 	err = json.NewEncoder(w).Encode(responseStruct)
 	if err != nil {
-		log.ErrorR(req, fmt.Errorf("error encoding comments json: [%v]", err))
+		fmt.Println(req, fmt.Errorf("error encoding comments json: [%v]", err))
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
@@ -143,7 +142,7 @@ func (service *MoviesService) HandleMostLikes(w http.ResponseWriter, req *http.R
 	// Returns all movies in the JSON
 	movies, err := service.Dao.GetJSONData()
 	if err != nil {
-		log.ErrorR(req, fmt.Errorf("error getting movie data from json: [%v]", err))
+		fmt.Println(req, fmt.Errorf("error getting movie data from json: [%v]", err))
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
@@ -151,8 +150,6 @@ func (service *MoviesService) HandleMostLikes(w http.ResponseWriter, req *http.R
 	mostLikedMovie := &models.MoviesResource{}
 
 	for _, movie := range movies.Movies {
-		println(movie.Likes)
-		println(mostLikedMovie.Likes)
 		if movie.Likes > mostLikedMovie.Likes {
 			*mostLikedMovie = movie
 		}
@@ -161,7 +158,7 @@ func (service *MoviesService) HandleMostLikes(w http.ResponseWriter, req *http.R
 	w.Header().Set("Content-Type", "application/json")
 	err = json.NewEncoder(w).Encode(mostLikedMovie)
 	if err != nil {
-		log.ErrorR(req, fmt.Errorf("error encoding most liked movie json: [%v]", err))
+		fmt.Println(req, fmt.Errorf("error encoding most liked movie json: [%v]", err))
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
